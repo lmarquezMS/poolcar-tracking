@@ -1,3 +1,3 @@
 module.exports = {
-  db: 'mongodb://lmarquez:issabib12@ds051833.mongolab.com:51833/carpooling-tracker'
+  db: 'mongodb://heroku-user:1qaz2wsx@ds051833.mongolab.com:51833/carpooling-tracker'
 }
