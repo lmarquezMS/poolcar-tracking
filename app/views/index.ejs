@@ -1,9 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:ng="http://angularjs.org">
 <head>
   <title><%= title %></title>
+  <script type="text/javascript" src="/lib/angular/angular.js"></script>
+  <script type="text/javascript" src="/lib/angular-ui-router/release/angular-ui-router.js"></script>
+  <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
+
+  <script type="text/javascript" src="/user/user.client.module.js"></script>
+  <script type="text/javascript" src="/user/services/user.client.service.js"></script>
+  <script type="text/javascript" src="/user/controller/user.client.controller.js"></script>
+  <script type="text/javascript" src="/user/config/user.client.routes.js"></script>
+  <script type="text/javascript" src="application.js"></script>
 </head>
 <body>
-  <h1><%= title %></h1>
+  <div ui-view></div>
+  <a ui-sref="userview">Simple User id 2</a><br>
+  <a ui-sref="usercreate">Create User</a><br>
+  <a ui-sref="userlist">List User</a>
 </body>
 </html>

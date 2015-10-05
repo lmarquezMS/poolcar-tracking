@@ -1,0 +1,26 @@
+{
+  "name": "poolcar-tracking",
+  "version": "1.0.0",
+  "homepage": "https://github.com/lmarquezMS/poolcar-tracking",
+  "moduleType": [
+    "node"
+  ],
+  "authors": [
+    "lmarquez@makingsense.com"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-material": "~0.11.2",
+    "angular-resource": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "bootstrap": "~3.3.5"
+  }
+}
