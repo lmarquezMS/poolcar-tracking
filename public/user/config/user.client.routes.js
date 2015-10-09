@@ -10,10 +10,19 @@ angular.module('user').config(['$stateProvider', function($stateProvider){
       templateUrl: '/user/views/list-user.client.views.html',
       controller: 'UserController'
     })
+    .state('useredit', {
+      url: "/users/edit/:userId",
+      templateUrl: '/user/views/edit-user.client.views.html',
+      controller: 'UserController'
+    })
+    .state('userremove', {
+      url: '/users/remove/:userId',
+      templateUrl: '/user/views/edit-user.client.views.html',
+      controller: 'UserController'
+    })
     .state('userview',{
       url: "/users/:userId",
       templateUrl: '/user/views/view-user.client.views.html',
       controller: 'UserController'
     });
-
 }]);

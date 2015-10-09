@@ -3,7 +3,6 @@ var mongoose = require('mongoose'),
   passport = require('passport');
 
 exports.list = function(req, res, next){
-
   User.find({}, function(err, users){
     if(err){
       return next(err);
@@ -19,9 +18,6 @@ exports.create = function(req, res, next){
 
   user.save(function(err){
     if(err){
-        console.log('#######################');
-        console.log(err);
-        console.log('#######################');
       return next(err);
     } else {
       res.json(user);
@@ -32,6 +28,27 @@ exports.create = function(req, res, next){
 exports.read = function(req, res){
   res.json(req.user);
 };
+
+exports.update = function(req, res, next){
+  User.findByIdAndUpdate(req.user._id, req.body, function(err, user){
+    if(err){
+      return next(err);
+    } else {
+      res.json(user);
+    }
+
+  });
+}
+
+exports.delete = function(req, res, next){
+  req.user.remove(function(err){
+    if(err){
+      return next(err);
+    }else{
+      res.json(req.user);
+    }
+  });
+}
 
 exports.userByID = function(req, res, next, id){
   User.findOne({_id: id}, function(err, user){
@@ -44,11 +61,20 @@ exports.userByID = function(req, res, next, id){
   });
 };
 
+exports.requiresLogin = function(req, res, next ){
+  if(!req.isAuthenticated()){
+    return res.status(401).send({
+      message: 'User is not logged in'
+    });
+  }
+
+  next();
+}
+
 exports.renderSignin = function(req, res, next){
   if(!req.user) {
     res.render('signin', {
-      title: 'Sign-In Form',
-      messages: req.flash('error') || req.flash('info')
+      title: 'Sign-In Form'
     });
   } else {
     return res.redirect('/');

@@ -39,8 +39,11 @@ var UserSchema = new Schema({
 
 // Antes de guardar el usuario hasheo el pass en salt
 UserSchema.pre('save', function(next){
+  console.log("entro al presave");
+  console.log(this);
   if(this.password) {
     this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
+    console.log("este es el salt: " + this.salt);
     this.password = this.hashPassword(this.password);
   }
   next();

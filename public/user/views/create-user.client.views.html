@@ -1,1 +1,40 @@
 <h1>Create User</h1>
+<section data-ng-controller="UserController" >
+  <form data-ng-submit="create()">
+      <div>
+        <label for="firstname">First Name</label>
+        <div>
+          <input type="text" data-ng-model="firstName" id="firstName"  placeholder="First Name" required/>
+        </div>
+      </div>
+      <div>
+        <label for="firstname">Last Name</label>
+        <div>
+          <input type="text" data-ng-model="lastName" id="lastName"  placeholder="Last Name" required/>
+        </div>
+      </div>
+      <div>
+        <label for="firstname">Email</label>
+        <div>
+          <input type="email" data-ng-model="email" id="email"  placeholder="Email" required/>
+        </div>
+      </div>
+      <div>
+        <label for="Username">First Name</label>
+        <div>
+          <input type="text" data-ng-model="username" id="username"  placeholder="Username" required/>
+        </div>
+      </div>
+      <div>
+        <label for="Password">Password</label>
+        <div>
+          <input type="password" data-ng-model="password" id="password"   required/>
+        </div>
+      </div>
+
+      <div>
+          <input type="submit" value="Submit"/>
+      </div>
+
+  </form>
+</section>

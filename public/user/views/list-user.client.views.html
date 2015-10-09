@@ -1,6 +1,6 @@
 <h1>Users List</h1>
 <section data-ng-controller="UserController" data-ng-init="find()">
   <ul>
-    <li data-ng-repeat="user in users">{{user._id}}, <a href="/#/users/{{user._id}}">{{user.username}}</a></li>
+    <li data-ng-repeat="user in users">{{user._id}}, <a href="/#/users/{{user._id}}">{{user.username}}</a>, <a href="/#/users/edit/{{user._id}}">edit</a>, <a href="#" data-ng-click="remove(user)">remove</a></li>
   </ul>
 </section>
