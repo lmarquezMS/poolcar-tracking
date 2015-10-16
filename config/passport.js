@@ -6,6 +6,7 @@ module.exports = function(){
 
 //Defino una clave de busqueda en la session para cuando quiero recuperar el usuario.
   passport.serializeUser(function(user, done){
+    console.log(user.id);
     done(null, user.id);
   });
 

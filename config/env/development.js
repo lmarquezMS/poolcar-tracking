@@ -1,3 +1,4 @@
 module.exports = {
-  db: 'mongodb://localhost/carpooling-tracker'
+  db: 'mongodb://localhost/carpooling-tracker',
+  sessionSecret: 'developmentSessionSecret'
 }

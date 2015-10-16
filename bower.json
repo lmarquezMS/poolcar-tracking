@@ -18,9 +18,12 @@
   ],
   "dependencies": {
     "angular": "~1.4.7",
+    "angular-bootstrap": "~0.14.2",
+    "angular-google-maps": "~2.2.1",
     "angular-material": "~0.11.2",
     "angular-resource": "~1.4.7",
     "angular-ui-router": "~0.2.15",
-    "bootstrap": "~3.3.5"
+    "jqlite": "~1.1.1",
+    "jquery": "~2.1.4"
   }
 }

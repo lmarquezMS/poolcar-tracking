@@ -19,5 +19,9 @@ module.exports = function(app){
       failureRedirect: '/signin'
     }));
 
+    app.route('/signup')
+      .get(users.renderSignup)
+      .post(users.signup);
+
   app.param('userId', usersController.userByID);
 };

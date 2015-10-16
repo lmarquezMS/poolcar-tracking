@@ -15,7 +15,6 @@ exports.create = function(req, res){
 }
 
 exports.read  = function(req, res, next){
-console.log(req.nRoute);
   Route.findOne({
     _id: req.nRoute._id
   }, function(err, route){
@@ -38,16 +37,6 @@ exports.list = function(req, res, next){
 };
 
 exports.update = function(req, res, next){
-  // var passangers = null;
-  //  User.find({})
-  //   .all(req.route.passangers, function(err, passangersList){
-  //     if(err)
-  //       next(err);
-  //     else passangers = passangersList;
-  //   });
-
-    // req.route._id
- console.log(req.nRoute);
   Route.findByIdAndUpdate(req.nRoute._id, req.body, function(err, route){
     if(err){
       next(err);

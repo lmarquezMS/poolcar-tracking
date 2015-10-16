@@ -1,7 +1,9 @@
 
 var mainApplicationModuleName = 'carpooling';
 
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngResource','ui.router', 'user', 'ngMaterial']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngResource','ui.router', 'user', 'route','maps', 'ngMaterial', 'ui.bootstrap']);
+
+
 
 
 //

@@ -10,7 +10,7 @@ angular.module('user').controller('UserController', ['$scope', '$stateParams', '
   }
 
   $scope.create = function(){
-    
+
     var response = Users.save({
       firstName: this.firstName,
       lastName: this.lastName,
@@ -47,4 +47,6 @@ angular.module('user').controller('UserController', ['$scope', '$stateParams', '
       $location.path('/users');
     }
   }
+
+
 }]);

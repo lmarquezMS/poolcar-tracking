@@ -1,0 +1,65 @@
+<style>
+.angular-google-map-container { height: 400px; }
+</style>
+
+<section  ng-controller="RouteController" ng-init="prepateToCreate()">
+  <form >
+  <div class="form-group">
+    <label>Name:</label>
+    <input type="text" required data-ng-model="nRoute.name" id="name" placeholder="Name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Count of seats</label>
+    <input type="number" data-ng-model="nRoute.seats" required  id="seats" placeholder="Seats" class="form-control">
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <ui-gmap-google-map control="map.control" center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Start Location</label>
+        <md-icon  style="material-icons" style="font-size: 16px !important;">place</md-icon>
+        <input ng-model="nRoute.originAddress" type="text" class="form-control" >
+      </div>
+      <div class="form-group">
+        <label>End Location</label>
+        <md-icon style="material-icons" style="font-size: 16px !important;">place</md-icon>
+        <input  type="text" ng-model="nRoute.destinationAddress" class="form-control">
+      </div>
+        <md-icon ng-click="drawRoute(nRoute.originAddress, nRoute.destinationAddress)" style="material-icons" style="font-size: 16px !important;">directions</md-icon>
+    </div>
+  </div>
+</fomr>
+</section>
+<section>
+
+    <md-radio-group ng-model="nRoute.type" style="display: inline">
+      <md-radio-button value="car" class="md-primary">
+        <md-icon class="material-icons">directions_car</md-icon> Car Pooling
+      </md-radio-button>
+      <md-radio-button value="bike" class="md-primary">
+        <md-icon class="material-icons">directions_bike</md-icon> Bike Buddy
+      </md-radio-button>
+      <md-radio-button value="walk" class="md-primary">
+        <md-icon class="material-icons">directions_walk</md-icon> Walk Buddy
+      </md-radio-button>
+    </md-radio-group>
+      <div layout="row" >
+        <div flex="66"  ng-init="autoLocate()">
+
+        </div>
+        <div flex>
+          <div layout="column" layout-align="center center">
+
+
+          <div id="route_panel"></div>
+        </div>
+        </div>
+    </div>
+  <!-- </md-content> -->
+
+  <input ng-click="create()" type="submit" class="md-primary"  value="SUBMIT"/>
+
+
+</section>

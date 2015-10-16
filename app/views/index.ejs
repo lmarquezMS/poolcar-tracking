@@ -3,23 +3,35 @@
 <head>
   <title><%= title %></title>
 
-  <link rel="stylesheet" href="/lib/angular-material/angular-material.min.css" type="text/stylesheet" >
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/lib/angular-bootstrap/ui-bootstrap-csp.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <meta name="viewport" content="initial-scale=1" />
   <style media="screen">
       .container{
-        max-width: 864px;
+        width: 850px;
       }
   </style>
 
 </head>
 <body layout="column">
-  <div layout="column"  layout-wrap layout-align="center center">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div ui-view></div>
+      </div>
+      <div class="col-md-4">
+        barra lateral
+      </div>
+    </div>
+  </div>
+  <!-- <div layout="column"  layout-wrap layout-align="center center" >
   <md-toolbar>
     <div class="md-toolbar-tools">
-      <span>My App's Title</span>
+      <span>My App's Title</span> -->
       <!-- fill up the space between left and right area -->
-      <span flex></span>
+      <!-- <span flex></span>
       <md-menu>
 
        <% if(!user) {%>
@@ -34,35 +46,50 @@
     </div>
   </md-toolbar>
   <md-content>
-    <div layout="row" class="container"  layout-width="864">
-      <div flex="80"><div ui-view></div></div>
-      <div flex >
-        <a ui-sref="usercreate">Create User</a><br>
-        <a ui-sref="userlist">List User</a>
-      </div>
+    <div layout="row" class="container"  >
+      <div flex><div ui-view></div></div>
+
     </div>
 
 
   </md-content>
-</div>
+</div> -->
+
 
 
 
 
   <!--Angular libraries  -->
+  <script type="text/javascript" src="/lib/lodash/lodash.js"></script>
+  <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="/lib/angular/angular.js"></script>
+
+  <!-- Bootstrap -->
+  <script src="/lib/angular-bootstrap/ui-bootstrap.js" charset="utf-8"></script>
 
   <script type="text/javascript" src="/lib/angular-ui-router/release/angular-ui-router.js"></script>
   <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
   <script src="/lib/angular-animate/angular-animate.js" type="text/javascript"></script>
   <script src="/lib/angular-aria/angular-aria.js" type="text/javascript"></script>
   <script src="/lib/angular-material/angular-material.js" type="text/javascript"></script>
+  <script src='/lib/angular-simple-logger/dist/index.js'></script>
+  <script src='/lib/angular-google-maps/dist/angular-google-maps.js'></script>
+  <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
 
+  <script type="text/javascript" src="/maps/maps.client.module.js"></script>
+  <script type="text/javascript" src="/maps/controller/maps.client.controller.js"></script>
 
   <script type="text/javascript" src="/user/user.client.module.js"></script>
   <script type="text/javascript" src="/user/services/user.client.service.js"></script>
   <script type="text/javascript" src="/user/controller/user.client.controller.js"></script>
   <script type="text/javascript" src="/user/config/user.client.routes.js"></script>
+
+  <script type="text/javascript" src="/route/route.client.module.js"></script>
+  <script type="text/javascript" src="/route/services/route.client.service.js"></script>
+  <script type="text/javascript" src="/route/controller/route.client.controller.js"></script>
+  <script type="text/javascript" src="/route/config/route.client.config.js"></script>
+
+
 
   <script type="text/javascript" src="application.js"></script>
 
