@@ -2,6 +2,7 @@ var mongoose = require('mongoose'),
   Route = mongoose.model('Route');
 
 exports.create = function(req, res){
+  console.log(req.body);
   var route = new Route(req.body);
   route.save(function(err){
     if(err){

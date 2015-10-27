@@ -2,7 +2,9 @@ var mongoose  = require('mongoose'),
   Schema      = mongoose.Schema;
 
 var routeSchema = new Schema({
-    dots: [{lat: String, long:String}],
+    origin: String,
+    destination: String,
+    dots: [{lat: String, lng:String}],
     name: String,
     schedule: [{
       weekDays: [String],

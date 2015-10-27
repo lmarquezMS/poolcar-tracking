@@ -3,95 +3,91 @@
 <head>
   <title><%= title %></title>
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/lib/angular-bootstrap/ui-bootstrap-csp.css" media="screen" title="no title" charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<meta name="viewport" content="initial-scale=1" />
-  <style media="screen">
-      .container{
-        width: 850px;
-      }
-  </style>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
 
-</head>
-<body layout="column">
+  <link rel="stylesheet" href="/lib/angular-material/angular-material.css" media="screen" title="no title" charset="utf-8">
 
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-8">
-        <div ui-view></div>
-      </div>
-      <div class="col-md-4">
-        barra lateral
-      </div>
-    </div>
-  </div>
-  <!-- <div layout="column"  layout-wrap layout-align="center center" >
-  <md-toolbar>
-    <div class="md-toolbar-tools">
-      <span>My App's Title</span> -->
-      <!-- fill up the space between left and right area -->
-      <!-- <span flex></span>
-      <md-menu>
+  <meta name="viewport" content="initial-scale=1" />
 
-       <% if(!user) {%>
-       <md-button >Sigin</md-button>
-       <% } else { %>
-        <md-button >Logout</md-button>
-       <% } %>
-       <md-menu-content>
-         <md-menu-item><md-button ng-click="doSomething()">Do Something</md-button></md-menu-item>
-       </md-menu-content>
-      </md-menu>
-    </div>
-  </md-toolbar>
-  <md-content>
-    <div layout="row" class="container"  >
-      <div flex><div ui-view></div></div>
-
-    </div>
-
-
-  </md-content>
-</div> -->
-
-
-
-
-
-  <!--Angular libraries  -->
   <script type="text/javascript" src="/lib/lodash/lodash.js"></script>
-  <script type="text/javascript" src="/lib/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="/lib/angular/angular.js"></script>
-
-  <!-- Bootstrap -->
-  <script src="/lib/angular-bootstrap/ui-bootstrap.js" charset="utf-8"></script>
-
-  <script type="text/javascript" src="/lib/angular-ui-router/release/angular-ui-router.js"></script>
-  <script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
-  <script src="/lib/angular-animate/angular-animate.js" type="text/javascript"></script>
-  <script src="/lib/angular-aria/angular-aria.js" type="text/javascript"></script>
-  <script src="/lib/angular-material/angular-material.js" type="text/javascript"></script>
   <script src='/lib/angular-simple-logger/dist/index.js'></script>
   <script src='/lib/angular-google-maps/dist/angular-google-maps.js'></script>
-  <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
 
-  <script type="text/javascript" src="/maps/maps.client.module.js"></script>
-  <script type="text/javascript" src="/maps/controller/maps.client.controller.js"></script>
+  <script type="text/javascript" src="/lib/angular-aria/angular-aria.min.js"></script>
+  <script type="text/javascript" src="/lib/angular-animate/angular-animate.min.js"></script>
+  <script type="text/javascript" src="/lib/angular-material/angular-material.min.js"></script>
 
+
+  <script src="/index/controllers/index.client.controller.js" charset="utf-8"></script>
+  <script src="/index/index.client.module.js" charset="utf-8"></script>
+
+
+
+  <!--
   <script type="text/javascript" src="/user/user.client.module.js"></script>
   <script type="text/javascript" src="/user/services/user.client.service.js"></script>
   <script type="text/javascript" src="/user/controller/user.client.controller.js"></script>
-  <script type="text/javascript" src="/user/config/user.client.routes.js"></script>
-
-  <script type="text/javascript" src="/route/route.client.module.js"></script>
-  <script type="text/javascript" src="/route/services/route.client.service.js"></script>
-  <script type="text/javascript" src="/route/controller/route.client.controller.js"></script>
-  <script type="text/javascript" src="/route/config/route.client.config.js"></script>
-
-
+  <script type="text/javascript" src="/user/config/user.client.routes.js"></script> -->
 
   <script type="text/javascript" src="application.js"></script>
+  <style media="screen">
+  .angular-google-map-container { height: 600px; }
+  </style>
+
+  <style media="screen">
+  .container{
+    width: 80%;
+  }
+  </style>
+
+</head>
+<body layout="column" >
+
+
+  <div layout="column" layout-align="center center">
+
+    <md-toolbar md-scroll-shrink>
+      <div layout="column" layout-align="center center">
+        <div class="container" layout="row" layout-align="center center">
+          <div flex>
+            <div layout="row"  layout-align="end center">
+              <md-button>Login</md-button>
+              <md-button>Register</md-button>
+            </div>
+          </div>
+        </div>
+        <div class="container" layout="row" layout-align="center center">
+          <div flex="40">
+            <h1>MS - Carpooling</h1>
+          </div>
+          <div flex>
+            <div layout="row"  layout-align="end center">
+              <A ng-click="action()" class="md-body-2">action1</A>&nbsp;|&nbsp;
+              <A ng-click="action()" class="md-body-2">action2</A>&nbsp;|&nbsp;
+              <A ng-click="action()" class="md-body-2">action3</A>&nbsp;|&nbsp;
+              <A ng-click="action()" class="md-body-2">action4</A>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </md-toolbar>
+    <md-divider></md-divider>
+  </div>
+
+  <div  layout="row" layout-align="center start">
+    <div flex>
+      <div data-ng-controller="mapController">
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' control="map.control"></ui-gmap-google-map>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
 
 </body>
 </html>

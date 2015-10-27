@@ -9,9 +9,9 @@
     </md-button>
 </div>
 
-<div class="row" data-ng-controller="RouteController">
-  <div class="col-md-8">
-    <ui-gmap-google-map control="map.control" center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+ <div class="row" data-ng-controller="routeListCtrl"   >
+  <div class="col-md-8" ng-controller="routeMapController" ng-init="loadMapOptions(drawRoutes)">
+    <ui-gmap-google-map control="map.control" center='map.center' zoom='map.zoom'  ></ui-gmap-google-map>
   </div>
   <div class="col-md-4">
     <table class="table">
@@ -28,22 +28,5 @@
         </tr>
       </tbody>
     </table>
-  </div>
-</div>
-<div layout="row" >
-  <div flex="66" ng-init="autoLocate()">
-
-  </div>
-  <div flex>
-    <md-list  data-ng-init="find()" >
-        <md-list-item  ng-repeat="route in routes" class="md-1-line">
-          <md-icon class="material-icons md-light md-avatar-icon">directions_car</md-icon>
-           <p>{{route.name}}</p>
-           <div>
-           <md-button ><md-icon class="material-icons md-light md-secondary " ng-click="remove($index, route)" >remove_circle_outline</md-icon></md-button>
-           <md-button ><md-icon class="material-icons md-light md-secondary " ng-click="remove($index, route)" >edit</md-icon></md-button>
-           <md-button ><md-icon class="material-icons md-light md-secondary " ng-click="remove($index, route)" >remove_red_eye</md-icon></md-button>         </div>
-         </md-list-item>
-      </md-list>
   </div>
 </div>

@@ -2,7 +2,7 @@
 .angular-google-map-container { height: 400px; }
 </style>
 
-<section  ng-controller="RouteController" ng-init="prepateToCreate()">
+<section  ng-controller="routeCreateController" >
   <form >
   <div class="form-group">
     <label>Name:</label>
@@ -12,29 +12,35 @@
     <label>Count of seats</label>
     <input type="number" data-ng-model="nRoute.seats" required  id="seats" placeholder="Seats" class="form-control">
   </div>
-  <div class="row">
+  <div class="row" ng-controller="routeMapController" >
     <div class="col-md-8">
-      <ui-gmap-google-map control="map.control" center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+      <ui-gmap-google-map control="map.control" center='map.center' zoom='map.zoom'>
+        <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible'
+                  geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></ui-gmap-polyline>
+      </ui-gmap-google-map>
     </div>
     <div class="col-md-4">
       <div class="form-group">
         <label>Start Location</label>
         <md-icon  style="material-icons" style="font-size: 16px !important;">place</md-icon>
-        <input ng-model="nRoute.originAddress" type="text" class="form-control" >
+        <input ng-model="mapOptions.origin" type="text" class="form-control" >
       </div>
       <div class="form-group">
         <label>End Location</label>
         <md-icon style="material-icons" style="font-size: 16px !important;">place</md-icon>
-        <input  type="text" ng-model="nRoute.destinationAddress" class="form-control">
+        <input  type="text" ng-model="mapOptions.destination" class="form-control">
       </div>
-        <md-icon ng-click="drawRoute(nRoute.originAddress, nRoute.destinationAddress)" style="material-icons" style="font-size: 16px !important;">directions</md-icon>
+        <md-icon ng-click="drawRoute(mapOptions, drawRouteCallback)" style="material-icons" style="font-size: 16px !important;">directions</md-icon>
     </div>
   </div>
-</fomr>
+</form>
+<input ng-click="create()" type="submit" class="md-primary"  value="SUBMIT"/>
 </section>
-<section>
 
-    <md-radio-group ng-model="nRoute.type" style="display: inline">
+
+<!-- <section>
+
+    <!-- <md-radio-group ng-model="nRoute.type" style="display: inline">
       <md-radio-button value="car" class="md-primary">
         <md-icon class="material-icons">directions_car</md-icon> Car Pooling
       </md-radio-button>
@@ -56,10 +62,9 @@
           <div id="route_panel"></div>
         </div>
         </div>
-    </div>
-  <!-- </md-content> -->
-
-  <input ng-click="create()" type="submit" class="md-primary"  value="SUBMIT"/>
+    </div> -->
+  <!-- </md-content>
 
 
-</section>
+
+</section> -->

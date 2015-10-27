@@ -3,12 +3,12 @@ angular.module('route').config(['$stateProvider', function($stateProvider){
     .state('routecreate', {
       url: "/routes/create",
       templateUrl: 'route/views/create-route.client.views.html',
-      controller: 'RouteController'
+      controller: 'routeCreateController'
     })
     .state('routelist', {
       url: '/routes/list',
       templateUrl: '/route/views/list-route.client.views.html',
-      controller: 'RouteController'
+      controller: 'routeListCtrl'
     })
     // .state('useredit', {
     //   url: "/users/edit/:userId",
