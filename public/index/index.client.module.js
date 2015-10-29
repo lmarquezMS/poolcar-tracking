@@ -2,7 +2,7 @@ var  indexModule = angular.module('indexModule', ['indexController','uiGmapgoogl
 
 indexModule.config(function(uiGmapGoogleMapApiProvider){
   uiGmapGoogleMapApiProvider.configure({
-    key: 'AIzaSyDbGFCm6CtBPgmlPu5IXpOYebqhCCNie8o',
+    key: 'AIzaSyBDAswZ7ptOSx7jH2ur0V0CbqjdWrlxBdU',
     libraries: 'geometry,visualization, geocoding'
   });
 });
