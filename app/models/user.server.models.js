@@ -31,6 +31,15 @@ var UserSchema = new Schema({
   },
   providerId: String,
   providerData: {},
+  address: {
+    addressStr: {
+      type: String
+    },
+    hidden: {
+      type: Boolean,
+      default: true
+    }
+  },
   created: {
     type: Date,
     default: Date.now
