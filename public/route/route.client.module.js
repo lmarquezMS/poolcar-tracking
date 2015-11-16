@@ -1,1 +1,1 @@
-var routeModule = angular.module('route', ['routeControllers']);
+var routeModule = angular.module('route',[]);

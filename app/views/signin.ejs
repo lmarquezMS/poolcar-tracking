@@ -1,24 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app="carpooling">
 <head>
   <title>
     <%=title %>
   </title>
-</head>
-<body>
+  <style>
+  .container{
+    width: 400px;
+    border-radius: 4px;
+  }
+  </style>
 
-    <form action="/signin" method="post">
-      <div>
-        <label>Username:</label>
-        <input type="text" name="username" />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input type="password" name="password" />
-      </div>
-      <div>
-        <input type="submit" value="Sign In" />
-      </div>
-    </form>
-  </body>
-  </html>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/lib/angular-material/angular-material.css" media="screen" title="no title" charset="utf-8">
+    <meta name="viewport" content="initial-scale=1" />
+
+    <script type="text/javascript" src="/lib/lodash/lodash.js"></script>
+    <script type="text/javascript" src="/lib/angular/angular.js"></script>
+
+    <script src="/lib/angular-resource/angular-resource.js" charset="utf-8"></script>
+
+    <script src='/lib/angular-simple-logger/dist/index.js'></script>
+    <script src='/lib/angular-google-maps/dist/angular-google-maps.js'></script>
+
+
+    <script src="/user/services/user.client.service.js"></script>
+    <script src="/user/user.client.module.js"></script>
+
+    <script src="/maps/services/maps.client.services.js"></script>
+
+    <script src="/route/route.client.module.js"></script>
+    <script src="/route/controller/route.client.controller.js"></script>
+    <script  src="/route/services/route.client.service.js"></script>
+
+    <script type="text/javascript" src="/lib/angular-aria/angular-aria.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="/lib/angular-material/angular-material.min.js"></script>
+
+
+    <script src="/index/controllers/index.client.controller.js" charset="utf-8"></script>
+    <script src="/index/index.client.module.js" charset="utf-8"></script>
+
+
+    <script type="text/javascript" src="application.js"></script>
+
+</head>
+<body layout="column" layout-align="center center">
+
+    <div class="container" layout-padding layout="column"  layout-align="start center">
+      <md-toolbar flex >
+        <h3>MS - Car Pooling</h3>
+      </md-toolbar>
+      <md-subheader class="md-primary">Login</md-subheader>
+      <form action="/signin" method="post" >
+        <md-input-container >
+          <label>Username</label>
+          <input type="text" name="username" />
+        </md-input-container>
+        <md-input-container >
+          <label>Password</label>
+          <input type="password" name="password"  />
+        </md-input-container>
+          <md-button md-ripple-size="full" class="md-raised md-primary">LOGIN</md-button>
+
+      </form>
+    </div>
+</body>
+</html>

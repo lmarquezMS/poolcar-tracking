@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-  Route = mongoose.model('Route');
+  Route = mongoose.model('Route'),
+  User = mongoose.model('User');
 
 exports.create = function(req, res){
   console.log(req.body);
@@ -31,10 +32,11 @@ exports.list = function(req, res, next){
   Route.find({}, function(err, routes){
     if(err){
       next(err);
-    } else {
-      res.json(routes);
     }
-  });
+ }).populate('driver', "username _id address").exec(function(err, routes){
+   console.log(routes[0].driver);
+   res.json(routes);
+ });
 };
 
 exports.update = function(req, res, next){

@@ -12,13 +12,15 @@ module.exports = function(){
           return done(err);
         }
         if (!user){
+          console.log("no existe user");
           return done(null, false, {message: "Unknow User"});
         }
 
         if (!user.authenticate(password)){
+          console.log("no authentica");
           return done(null, false, {message: 'Invalid Password'});
         }
-
+        console.log("no hubo problema");
         return done(null, user);
     });
   })

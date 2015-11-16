@@ -12,16 +12,8 @@ module.exports = function(app){
     .put(usersController.update)
     .delete(usersController.delete);
 
-  app.route('/signin')
-    .get(usersController.renderSignin)
-    .post(passport.authenticate('local', {
-      successRedirect: '/',
-      failureRedirect: '/signin'
-    }));
 
-    app.route('/signup')
-      .get(users.renderSignup)
-      .post(users.signup);
+
 
   app.param('userId', usersController.userByID);
 };

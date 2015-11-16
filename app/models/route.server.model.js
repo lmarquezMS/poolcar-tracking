@@ -4,7 +4,7 @@ var mongoose  = require('mongoose'),
 var routeSchema = new Schema({
     origin: String,
     destination: String,
-    dots: [{lat: String, lng:String}],
+    dots: [{latitude: String, longitude:String}],
     name: String,
     schedule: [{
       weekDays: [String],
@@ -17,7 +17,8 @@ var routeSchema = new Schema({
       type: Schema.ObjectId,
       ref: 'User'
     },
-    seats: Number
+    seats: Number,
+    routeType: String
 });
 
 mongoose.model('Route', routeSchema);

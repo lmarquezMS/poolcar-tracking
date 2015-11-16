@@ -14,6 +14,7 @@ var UserSchema = new Schema({
     required: 'Username is required',
     trim: true
   },
+  photo: String,
   password: {
     type: String,
     validate: [

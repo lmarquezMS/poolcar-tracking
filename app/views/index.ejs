@@ -1,93 +1,296 @@
 <!DOCTYPE html>
 <html xmlns:ng="http://angularjs.org" data-ng-app="carpooling">
 <head>
-  <title><%= title %></title>
+<title><%= title %></title>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="/lib/angular-material/angular-material.css" media="screen" title="no title" charset="utf-8">
+<meta name="viewport" content="initial-scale=1" />
 
-  <link rel="stylesheet" href="/lib/angular-material/angular-material.css" media="screen" title="no title" charset="utf-8">
+<script type="text/javascript">
 
-  <meta name="viewport" content="initial-scale=1" />
+window.user = <%- JSON.stringify(user) || 'null' %>;
 
-  <script type="text/javascript" src="/lib/lodash/lodash.js"></script>
-  <script type="text/javascript" src="/lib/angular/angular.js"></script>
-  <script src='/lib/angular-simple-logger/dist/index.js'></script>
-  <script src='/lib/angular-google-maps/dist/angular-google-maps.js'></script>
+</script>
 
-  <script type="text/javascript" src="/lib/angular-aria/angular-aria.min.js"></script>
-  <script type="text/javascript" src="/lib/angular-animate/angular-animate.min.js"></script>
-  <script type="text/javascript" src="/lib/angular-material/angular-material.min.js"></script>
+<script type="text/javascript" src="/lib/lodash/lodash.js"></script>
+<script type="text/javascript" src="/lib/angular/angular.js"></script>
 
+<script src="/lib/angular-resource/angular-resource.js" charset="utf-8"></script>
 
-  <script src="/index/controllers/index.client.controller.js" charset="utf-8"></script>
-  <script src="/index/index.client.module.js" charset="utf-8"></script>
+<script src='/lib/angular-simple-logger/dist/index.js'></script>
+<script src='/lib/angular-google-maps/dist/angular-google-maps.js'></script>
 
 
+<script src="/user/services/user.client.service.js"></script>
+<script src="/user/user.client.module.js"></script>
 
-  <!--
-  <script type="text/javascript" src="/user/user.client.module.js"></script>
-  <script type="text/javascript" src="/user/services/user.client.service.js"></script>
-  <script type="text/javascript" src="/user/controller/user.client.controller.js"></script>
-  <script type="text/javascript" src="/user/config/user.client.routes.js"></script> -->
+<script src="/maps/services/maps.client.services.js"></script>
 
-  <script type="text/javascript" src="application.js"></script>
-  <style media="screen">
-  .angular-google-map-container { height: 600px; }
-  </style>
+<script src="/route/route.client.module.js"></script>
+<script src="/route/controller/route.client.controller.js"></script>
+<script  src="/route/services/route.client.service.js"></script>
 
-  <style media="screen">
-  .container{
-    width: 80%;
-  }
-  </style>
+<script type="text/javascript" src="/lib/angular-aria/angular-aria.min.js"></script>
+<script type="text/javascript" src="/lib/angular-animate/angular-animate.min.js"></script>
+<script type="text/javascript" src="/lib/angular-material/angular-material.min.js"></script>
+
+
+<script src="/index/controllers/index.client.controller.js" charset="utf-8"></script>
+<script src="/index/index.client.module.js" charset="utf-8"></script>
+
+
+<script type="text/javascript" src="application.js"></script>
+<style media="screen">
+.angular-google-map-container { height: 600px; }
+.user-avatar{
+  border-radius: 100%;
+  width: 40px;
+}
+.container{
+  width: 80%;
+}
+
+.speed-dial-container{
+  position: relative;
+  width: 100%;
+}
+.add-speed-dial{
+  top: -36px !important;
+  right: 20px !important;
+}
+
+/*.material-icons.dark-icon{
+  color: rgba(162, 152, 152, 0.54)!important ;
+}*/
+
+.md-fab > .material-icons{
+  transition: all .15s ease-in;
+}
+
+
+.icon--rotate:hover .material-icons{
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+}
+
+/*.speed-dial-container .md-fab:hover .dark-icon{
+  color: rgb(255,255,255) !important; }
+}*/
+
+.mdfab.btn-user{
+  padding: 0 !important;
+}
+
+.speeddial-btn.btn-car{
+  background-color: rgba(255, 0, 0, 1);
+}
+
+.speeddial-btn.btn-car:hover{
+  background-color: rgba(255, 0, 0, 0.5) !important;
+}
+
+.speeddial-btn.btn-bike{
+  background-color: rgba(0, 109, 217, 1);
+}
+
+.speeddial-btn.btn-bike:hover{
+  background-color: rgba(0, 109, 217, 0.5) !important;
+}
+
+.speeddial-btn.btn-walk{
+  background-color: rgba(0, 178, 0, 1);
+}
+
+.speeddial-btn.btn-walk:hover{
+  background-color: rgba(0, 178, 0, 0.5) !important;
+}
+
+.speeddial-btn md-icon{
+  color: #FFFFFF !important;
+}
+
+.toolbar-car{
+  background-color: #FF0000 !important;
+}
+
+.toolbar-bike{
+  background-color: #006DD9 !important;
+}
+
+.toolbar-walk{
+  background-color: #00B200 !important;
+}
+
+.formToolbar, .formToolbar .md-button{
+  color: #FFFFFF !important;
+}
+
+
+
+</style>
 
 </head>
-<body layout="column" >
+<body layout="column" ng-controller="indexGralCtrl" >
 
-
+<!-- MAIN TOOLBAR -->
+<md-toolbar md-scroll-shrink >
   <div layout="column" layout-align="center center">
-
-    <md-toolbar md-scroll-shrink>
-      <div layout="column" layout-align="center center">
-        <div class="container" layout="row" layout-align="center center">
-          <div flex>
-            <div layout="row"  layout-align="end center">
-              <md-button>Login</md-button>
-              <md-button>Register</md-button>
-            </div>
-          </div>
-        </div>
-        <div class="container" layout="row" layout-align="center center">
-          <div flex="40">
-            <h1>MS - Carpooling</h1>
-          </div>
-          <div flex>
-            <div layout="row"  layout-align="end center">
-              <A ng-click="action()" class="md-body-2">action1</A>&nbsp;|&nbsp;
-              <A ng-click="action()" class="md-body-2">action2</A>&nbsp;|&nbsp;
-              <A ng-click="action()" class="md-body-2">action3</A>&nbsp;|&nbsp;
-              <A ng-click="action()" class="md-body-2">action4</A>
-            </div>
-          </div>
-        </div>
+    <div class="container" layout="row" layout-align="center center">
+      <div flex="40">
+        <h1>MS - Carpooling</h1>
       </div>
+      <div flex>
+        <div layout="row"  layout-align="end center">
+          <md-menu-bar>
+            <span><%= user.fullName %>&nbsp;&nbsp;</span>
+            <md-menu>
+              <md-button md-no-ink md-ripple-size="full" style="padding:0;" ng-click="$mdOpenMenu($event)" class="md-fab md-mini btn-user"><img ng-src="<%= user.photo %>"  class="user-avatar" /></md-button>
+              <md-menu-content>
 
-    </md-toolbar>
-    <md-divider></md-divider>
-  </div>
+                <md-list>
+                  <md-list-item class="md-3-line" >
+                    <img ng-src="<%= user.photo %>" class="md-avatar" alt="<%= user.fullName %>" />
+                    <div class="md-list-item-text" layout="column">
+                      <h3><%= user.fullName %></h3>
+                      <h4>email</h4>
+                      <p>descripcion</p>
+                    </div>
+                  </md-list-item>
+                </md-list>
 
-  <div  layout="row" layout-align="center start">
-    <div flex>
-      <div data-ng-controller="mapController">
-        <ui-gmap-google-map center='map.center' zoom='map.zoom' control="map.control"></ui-gmap-google-map>
+                <md-button ng-href="/signout" class="md-raised" >Logout</md-button>
+              </md-menu-content>
+            </md-menu>
+          </md-menu-bar>
+        </div>
       </div>
     </div>
   </div>
+</md-toolbar>
 
+<md-divider></md-divider>
 
+<!-- MAIN CONTENT -->
+<div layout="column" ng-controller="routeController" md-theme="dark">
+    <div layout="row" class="speed-dial-container" layout-align="end center" >
+      <md-fab-speed-dial class=" md-fab-top-right add-speed-dial" md-open="fabTrigged.isOpen"  md-direction="down" class="md-fling">
+        <md-fab-trigger>
+          <md-button aria-label="Add..." class="md-fab icon--rotate">
+            <md-icon class="material-icons">add</md-icon></md-button>
+        </md-fab-trigger>
+        <md-fab-actions>
+          <md-button aria-label="Add User" ng-click="newRouteForm('car')"  class="md-fab md-raised md-mini speeddial-btn btn-car" >
+            <md-tooltip md-direction="left" md-visible="fabTrigged.isOpen">
+              Car Pooling
+            </md-tooltip>
+            <md-icon  class="material-icons dark-icon"  >directions_car</md-icon>
+          </md-button>
+          <md-button aria-label="Add Group" ng-click="newRouteForm('bike')" class="md-fab md-raised md-mini speeddial-btn btn-bike">
+            <md-tooltip  md-direction="left" md-visible="fabTrigged.isOpen">
+              Bike Buddie
+            </md-tooltip>
+            <md-icon  class="material-icons dark-icon" >directions_bike</md-icon>
+          </md-button>
+          <md-button aria-label="Add Group" ng-click="newRouteForm('walk')"  class="md-fab md-raised md-mini speeddial-btn btn-walk">
+            <md-tooltip  md-direction="left" md-visible="fabTrigged.isOpen">
+              Walk Group
+            </md-tooltip>
+            <md-icon  class="material-icons dark-icon" >directions_walk</md-icon>
+          </md-button>
+        </md-fab-actions>
+      </md-fab-speed-dial>
+    </div>
+    <div layout="row" class="main-container" data-ng-controller="mapController">
+      <md-sidenav layout="column" md-component-id="left"  md-is-locked-open="$mdMedia('min-width: 333px')" class="md-sidenav-left md-whiteframe-z2" >
 
+        <div layout="row" layout-align="space-around center">
+          <md-button class="md-icon-button md-icon-fab">
+            <md-icon class="material-icons">directions_car</md-icon>
+          </md-button>
+          <md-button class="md-icon-button">
+            <md-icon class="material-icons">directions_bike</md-icon>
+          </md-button>
+          <md-button class="md-icon-button">
+            <md-icon class="material-icons">directions_walk</md-icon>
+          </md-button>
+        </div>
 
+        <md-list >
+          <md-list-item  ng-repeat="r in routes" class="md-3-line">
+            <md-icon class="material-icons md-avatar-icon" >directions_bike</md-icon>
+            <div class="md-list-item-text">
+              <h3>{{r.name}}</h3>
+              <h4>Created by {{r.driver.username}}</h4>
+              <p>prueba</p>
+            </div>
+          </md-list-item>
+        </md-list>
 
+      </md-sidenav>
+      <div  flex>
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' control="map.control">
+          <ui-gmap-markers models="usersMarks" coords="'coords'"  icon="'icon'" idKey="id">
+          </ui-gmap-marker>
+          <ui-gmap-polyline
+            ng-repeat="r in routes"
+            idKey="'_id'"
+            path= "r.dots"
+            static="true"
+            stroke="prueba(r.routeType)">
+          </ui-gmap-polyline>
+          <!-- <ui-gmap-polyline ng-repeat="r in mapOptionsList" path="r.path" ></ui-gmap-polyline> -->
+        </ui-gmap-google-map>
+      </div>
+      <div >
+        <md-sidenav md-component-id="right" class="md-sidenav-right"   >
+          <md-toolbar class="formToolbar toolbar-{{newRoute.routeType}}">
+            <div class="md-toolbar-tools">
+              <md-button class="md-icon-button">
+                <md-icon class="material-icons">clear</md-icon>
+              </md-button>
+              <span>My App's Title</span>
+              <!-- fill up the space between left and right area -->
+              <span flex></span>
+              <md-button class="md-icon-button">
+                <md-icon class="material-icons">done</md-icon>
+              </md-button>
+            </div>
+          </md-toolbar>
+          <form ng-submit="create()">
+            <md-input-container>
+              <label for="testInput">Route name</label>
+              <input type="text" ng-model="newRoute.name" >
+            </md-input-container>
+            <md-input-container>
+              <label for="testInput">Available seats</label>
+              <input type="number" ng-model="newRoute.seats">
+            </md-input-container>
+            <md-input-container>
+              <label for="testInput">Origin address</label>
+              <input type="text" ng-model="newRoute.origin" >
+            </md-input-container>
+            <md-input-container>
+              <label for="testInput">Destination address</label>
+              <input type="text" ng-model="newRoute.destination" >
+            </md-input-container>
+            <md-datepicker ng-model="newRoute.schedule"></md-datepicker>
 
+            <input type="hidden" ng-model="newRoute.type" />
+
+            <div layout="row" layout-align="space-around center">
+              <md-button>submit</md-button>
+              <md-button>clear</md-button>
+              <div>
+              </form>
+            </md-sidenav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END MAIN CONTENT -->
 </body>
 </html>

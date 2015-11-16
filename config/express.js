@@ -42,6 +42,7 @@ module.exports = function(){
   require('../app/routes/index.server.routes.js')(app);
   require('../app/routes/route.server.route.js')(app);
   require('../app/routes/user.server.route.js')(app);
+  require('../app/routes/authentication.server.route')(app);
 
   app.use(express.static('./public'));
 
