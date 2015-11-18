@@ -8,17 +8,12 @@ var UserSchema = new Schema({
   email: {
     type: String
   },
-  username: {
-    type: String,
-    unique: true,
-    required: 'Username is required',
-    trim: true
-  },
   photo: String,
   password: {
     type: String,
     validate: [
       function(password){
+        console.log("quiere verificar pass");
         return password && password.length > 6
       }, 'Password should be longer'
     ],
@@ -31,7 +26,9 @@ var UserSchema = new Schema({
     required: 'Provider is required'
   },
   providerId: String,
-  providerData: {},
+  providerData: {
+    type: Object
+  },
   address: {
     addressStr: {
       type: String
@@ -49,8 +46,6 @@ var UserSchema = new Schema({
 
 // Antes de guardar el usuario hasheo el pass en salt
 UserSchema.pre('save', function(next){
-  console.log("entro al presave");
-  console.log(this);
   if(this.password) {
     this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
     console.log("este es el salt: " + this.salt);

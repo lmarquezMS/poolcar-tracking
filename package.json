@@ -5,8 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install":  "npm update; bower update"
-
+    "install": "npm update; bower update"
   },
   "repository": {
     "type": "git",
@@ -30,6 +29,9 @@
     "mongoose": "^4.1.9",
     "morgan": "^1.6.1",
     "passport": "^0.3.0",
-    "passport-local": "^1.0.0"
+    "passport-google": "^0.3.0",
+    "passport-google-oauth": "^0.2.0",
+    "passport-local": "^1.0.0",
+    "passport-oauth": "^1.0.0"
   }
 }
