@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="/lib/angular-material/angular-material.css" media="screen" title="no title" charset="utf-8">
     <meta name="viewport" content="initial-scale=1" />
@@ -50,8 +50,19 @@
 
 </head>
 <body layout="column" layout-align="center center">
-    <div class="container" layout-padding layout="column"  layout-align="start center" ng-controller="indexSignInCtrl">
-      <form action="/signin" method="post"  style="width: 100%;" >
+  <div layout="column" layout-padding layout-wrap layout-fill style="padding-bottom: 32px;" ng-cloak layout-align="center center">
+    <md-whiteframe class="md-whiteframe-1dp" flex-sm="45" flex-gt-sm="35" flex-gt-md="25" layout="column" layout-align="center center">
+      <md-toolbar >
+        <h3>MS - Car Pooling</h3>
+      </md-toolbar>
+      <md-subheader  class="md-primary">Login</md-subheader>
+    </md-whiteframe>
+  </div>
+    <div class="container" layout-padding layout="column"  layout-align="start center">
+
+
+
+      <form action="/signin" method="post"  style="width: 100%;">
         <md-input-container >
           <label>Username</label>
           <input type="text" name="username" />
@@ -61,12 +72,14 @@
           <input type="password" name="password"  />
         </md-input-container>
           <md-button md-ripple-size="full" class="md-raised md-primary">LOGIN</md-button>
+
       </form>
 
-      <div layout="row" layout-align="space-around center" style="width: 100%;">
-        <md-button flex class="md-raised" ng-disabled="true" disabled><md-icon class="fa fa-facebook-official fa-lg"></md-icon><span class="md-caption">facebook</span></md-button>
-        <md-button class="md-raised" href="auth/google"><md-icon class="fa fa-google fa-lg"></md-icon><span class="md-caption">google</span></md-button>
-        <md-button class="md-raised" ng-disabled="true"><md-icon class="fa fa-linkedin fa-lg"></md-icon><span class="md-caption">linkedin</span></md-button>
+
+      <div layout="column" layout-align="space-around center" style="width: 100%;">
+        <md-button flex class="md-raised"><md-icon class="fa fa-facebook-official fa-lg"></md-icon><span class="md-caption">facebook</span></md-button>
+        <md-button class="md-raised"><md-icon class="fa fa-google fa-lg"></md-icon><span class="md-caption">google</span></md-button>
+        <md-button class="md-raised"><md-icon class="fa fa-linkedin fa-lg"></md-icon><span class="md-caption">linkedin</span></md-button>
       </div>
 
     </div>

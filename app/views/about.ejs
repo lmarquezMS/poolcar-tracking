@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html data-ng-app="carpooling">
+<head>
+  <title>
+    <%=title %>
+  </title>
+  <style>
+  .container{
+    width: 400px;
+    border-radius: 4px;
+  }
+  </style>
+
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,900italic,900,700italic,700,500italic,500,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+
+  <link rel="stylesheet" href="/lib/angular-material/angular-material.css" media="screen" title="no title" charset="utf-8">
+
+  <meta name="viewport" content="initial-scale=1" />
+
+
+  <script type="text/javascript" src="/lib/lodash/lodash.js"></script>
+  <script type="text/javascript" src="/lib/angular/angular.js"></script>
+
+  <script src="/lib/angular-resource/angular-resource.js" charset="utf-8"></script>
+
+  <script src='/lib/angular-simple-logger/dist/index.js'></script>
+  <script src='/lib/angular-google-maps/dist/angular-google-maps.js'></script>
+
+
+  <script src="/user/services/user.client.service.js"></script>
+  <script src="/user/user.client.module.js"></script>
+
+  <script type="text/javascript" src="/lib/angular-aria/angular-aria.min.js"></script>
+  <script type="text/javascript" src="/lib/angular-animate/angular-animate.min.js"></script>
+  <script type="text/javascript" src="/lib/angular-material/angular-material.min.js"></script>
+
+
+  <script src="/index/controllers/index.client.controller.js" charset="utf-8"></script>
+  <script src="/index/index.client.module.js" charset="utf-8"></script>
+
+
+  <script type="text/javascript" src="application.js"></script>
+
+</head>
+<body layout="column" layout-align="center center">
+
+    <div class="container" layout-padding layout="column"  layout-align="start center">
+      <md-toolbar flex >
+        <h3>MS - Car Pooling</h3>
+      </md-toolbar>
+      <md-subheader class="md-primary">Login</md-subheader>
+      <form action="/signin" method="post" >
+        <md-input-container >
+          <label>Username</label>
+          <input type="text" name="username" />
+        </md-input-container>
+        <md-input-container >
+          <label>Password</label>
+          <input type="password" name="password"  />
+        </md-input-container>
+          <md-button md-ripple-size="full" class="md-raised md-primary">LOGIN</md-button>
+
+      </form>
+    </div>
+</body>
+</html>

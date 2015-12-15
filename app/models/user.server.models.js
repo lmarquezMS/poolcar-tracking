@@ -50,6 +50,7 @@ UserSchema.pre('save', function(next){
     this.salt = new Buffer(crypto.randomBytes(16).toString('base64'), 'base64');
     console.log("este es el salt: " + this.salt);
     this.password = this.hashPassword(this.password);
+    console.log("este es el pass "+this.password);
   }
   next();
 });

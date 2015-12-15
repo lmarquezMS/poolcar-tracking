@@ -69,6 +69,10 @@ indexController.controller('indexGralCtrl' , ['$scope',  function($scope){
     window.location = ('/signout');
   }
 
+
+}]);
+
+indexController.controller('indexSignInCtrl', ['$scope', 'Users', function($scope, Users){
   
 }]);
 
