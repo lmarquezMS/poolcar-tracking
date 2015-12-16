@@ -1,11 +1,12 @@
 var passport = require('passport'),
   GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
-  User = require('mongoose').model('User');
+  User = require('mongoose').model('User'),
+  config = require('../config');
 
 
 module.exports = function(){
     passport.use(new GoogleStrategy({
-      callbackURL: 'http://localhost:3000/auth/google/return',
+      callbackURL: config.url+'/auth/google/return',
       clientID: '35240953453-giu55l3vuh5j90cbjdg9nr5v5mslumfp.apps.googleusercontent.com',
       clientSecret: 'AyOlpHSCl1D4ldFU1TOqLtL1'
     },
