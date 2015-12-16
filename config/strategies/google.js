@@ -12,7 +12,7 @@ module.exports = function(){
     function(accessToken, refreshToken, profile, done) {
       console.log(profile);
       process.nextTick(function(){
-        User.findOne({provider: 'google', 'providerData.accessToken': accessToken }, function(err, user) {
+        User.findOne({provider: 'google', 'providerData.google.id': profile.id }, function(err, user) {
           if(err){
             return done(err)
           }

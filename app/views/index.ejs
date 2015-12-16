@@ -230,7 +230,7 @@ window.user = <%- JSON.stringify(user) || 'null' %>;
         </md-list>
 
       </md-sidenav>
-      <div  flex>
+      <div  flex ng-controller="routeController">
         <ui-gmap-google-map center='map.center' zoom='map.zoom' control="map.control">
           <ui-gmap-markers models="usersMarks" coords="'coords'"  icon="'icon'" idKey="id">
           </ui-gmap-marker>

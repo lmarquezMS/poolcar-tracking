@@ -40,7 +40,8 @@ userServices.factory('Maps', ['$q', 'uiGmapGoogleMapApi','uiGmapIsReady', functi
         // directionsDisplay.setMap(mapInstance[0].map);
         // directionsDisplay.setOptions({draggable: true});
         // directionsDisplay.setDirections(response);
-        callback(response);
+        if(callback)
+          callback(response);
 
       } else {
         alert("No existen rutas entre ambos puntos");

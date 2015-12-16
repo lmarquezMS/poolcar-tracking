@@ -79,7 +79,7 @@ angular.module('route').controller('routeController', ['$scope', 'Maps',  'Route
             var nextSegment = leg.steps[j].path;
             for (k=0;k<nextSegment.length;k++) {
               var nStep = nextSegment[k];
-              dots.push({latitude: nStep.G, longitude: nStep.K });
+              dots.push({latitude: nStep.lat(), longitude: nStep.lng() });
             }
           }
 

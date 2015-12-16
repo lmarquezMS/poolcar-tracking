@@ -1,7 +1,7 @@
 var indexController = angular.module('indexController', []);
 
 
-indexController.controller('mapController', ['$scope','uiGmapGoogleMapApi','uiGmapIsReady', 'Users','Routes', function($scope, uiGmapGoogleMapApi,uiGmapIsReady, Users, Routes){
+indexController.controller('mapController', ['$scope','uiGmapGoogleMapApi','uiGmapIsReady', 'Users','Routes','Maps', function($scope, uiGmapGoogleMapApi,uiGmapIsReady, Users, Routes, Maps){
   $scope.title="titulo";
   $scope.map = {center: {latitude: 51.219053, longitude: 4.404418 }, zoom: 15, control: {} };
   $scope.usersMarks = [];
@@ -21,16 +21,19 @@ indexController.controller('mapController', ['$scope','uiGmapGoogleMapApi','uiGm
     uiGmapGoogleMapApi.then(function(maps){
       var geocoder = new maps.Geocoder();
       geocoder.geocode({'address': user.address.addressStr}, function(res, status){
-        var marker = {
-          id: user._id,
-          coords: {
-            latitude:res[0].geometry.location.G,
-            longitude: res[0].geometry.location.K,
-          },
-          icon: {
-            url: '//lh5.googleusercontent.com/-ju-u7uhJwsc/AAAAAAAAAAI/AAAAAAAAAAA/viIkUsrnq_8/s32-c-mo/photo.jpg'}
-        };
-        callback(marker);
+        if (status !== "ZERO_RESULTS"){
+          var marker = {
+            id: user._id,
+            coords: {
+              latitude:res[0].geometry.location.G,
+              longitude: res[0].geometry.location.K,
+            },
+            icon: {
+              url: '//lh5.googleusercontent.com/-ju-u7uhJwsc/AAAAAAAAAAI/AAAAAAAAAAA/viIkUsrnq_8/s32-c-mo/photo.jpg'}
+          };
+          callback(marker);
+        }
+
       });
     });
   }
@@ -39,9 +42,12 @@ indexController.controller('mapController', ['$scope','uiGmapGoogleMapApi','uiGm
   Routes.query().$promise.then(function (result){
     var routes = [];
     for(var i=0; i<result.length; i++){
-      createMarker(result[i], function(marker){
-        $scope.usersMarks.push(marker);
-      });
+      var route = result[i];
+
+      //Maps.drawRoute(route.origin, route.destination, null);
+      // createMarker(result[i], function(marker){
+      //   $scope.usersMarks.push(marker);
+      // });
     }
   });
 
@@ -72,8 +78,11 @@ indexController.controller('indexGralCtrl' , ['$scope',  function($scope){
 
 }]);
 
-indexController.controller('indexSignInCtrl', ['$scope', 'Users', function($scope, Users){
-  
+indexController.controller('indexSignInCtrl' , ['$scope',  function($scope){
+
+
+
+
 }]);
 
 indexController.controller('index');
