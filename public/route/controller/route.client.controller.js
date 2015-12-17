@@ -11,6 +11,32 @@ angular.module('route').controller('routeController', ['$scope', 'Maps',  'Route
 
   }
 
+  $scope.search = {
+    type_bike: true,
+    type_walk: true,
+    type_car: true,
+    text: ""
+  }
+
+  $scope.selectFilter = function(type){
+    switch(type){
+      case "car":
+        $scope.search.type_car = !($scope.search.type_car);
+        break;
+      case "bike":
+        $scope.search.type_bike = !($scope.search.type_bike);
+        break;
+      case "walk":
+        $scope.search.type_walk = !($scope.search.type_walk);
+        break;
+
+    }
+  }
+
+  $scope.getFilter = function(filter){
+    return $scope.search['type_'+filter.routeType];
+  }
+
   $scope.prueba = function(routeType){
 
     switch(routeType){

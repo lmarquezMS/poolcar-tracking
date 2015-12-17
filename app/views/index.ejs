@@ -207,20 +207,20 @@ window.user = <%- JSON.stringify(user) || 'null' %>;
       <md-sidenav layout="column" md-component-id="left"  md-is-locked-open="$mdMedia('min-width: 333px')" class="md-sidenav-left md-whiteframe-z2" >
 
         <div layout="row" layout-align="space-around center">
-          <md-button class="md-icon-button md-icon-fab">
-            <md-icon class="material-icons">directions_car</md-icon>
+          <md-button class="md-icon-button md-icon-fab" ng-click="selectFilter('car')">
+            <md-icon class="material-icons"  ng-style="search.type_car ? {color: 'rgb(255,64,129)'}: {}">directions_car</md-icon>
           </md-button>
-          <md-button class="md-icon-button">
-            <md-icon class="material-icons">directions_bike</md-icon>
+          <md-button class="md-icon-button" ng-click="selectFilter('bike')">
+            <md-icon class="material-icons" ng-style="search.type_bike ? {color: 'rgb(255,64,129)'}: {}">directions_bike</md-icon>
           </md-button>
-          <md-button class="md-icon-button">
-            <md-icon class="material-icons">directions_walk</md-icon>
+          <md-button class="md-icon-button" ng-click="selectFilter('walk')">
+            <md-icon class="material-icons" ng-style="search.type_walk ? {color: 'rgb(255,64,129)'}: {}">directions_walk</md-icon>
           </md-button>
         </div>
 
         <md-list >
-          <md-list-item  ng-repeat="r in routes" class="md-3-line">
-            <md-icon class="material-icons md-avatar-icon" >directions_bike</md-icon>
+          <md-list-item  ng-repeat="r in routes | filter:getFilter" class="md-3-line">
+            <md-icon class="material-icons md-avatar-icon" >directions_{{r.routeType}}</md-icon>
             <div class="md-list-item-text">
               <h3>{{r.name}}</h3>
               <h4>Created by {{r.driver.username}}</h4>
@@ -235,7 +235,7 @@ window.user = <%- JSON.stringify(user) || 'null' %>;
           <ui-gmap-markers models="usersMarks" coords="'coords'"  icon="'icon'" idKey="id">
           </ui-gmap-marker>
           <ui-gmap-polyline
-            ng-repeat="r in routes"
+            ng-repeat="r in routes | filter:getFilter"
             idKey="'_id'"
             path= "r.dots"
             static="true"
